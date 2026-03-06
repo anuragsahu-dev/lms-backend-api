@@ -1,4 +1,4 @@
-import { ApiError } from "../middlewares/error.middleware.js";
+import { ValidationException } from "../middlewares/error.middleware.js";
 
 export const validate = (schema) => {
   return (req, res, next) => {
@@ -7,9 +7,8 @@ export const validate = (schema) => {
     });
 
     if (error) {
-      const message = error.details.map((err) => err.message).join(", ");
-
-      throw new ApiError(400, "validation error", message);
+      const messages = error.details.map((err) => err.message);
+      throw new ValidationException("Validation error", messages);
     }
     req.validated = value
     next();

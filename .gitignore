@@ -7,3 +7,14 @@ node_modules/
 # editors
 .vscode/
 
+# uploads
+uploads/
+
+# logs
+logs/
+*.log
+npm-debug.log*
+
+# system files
+.DS_Store
+Thumbs.db
